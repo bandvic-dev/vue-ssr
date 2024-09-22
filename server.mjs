@@ -5,6 +5,7 @@ import { createSSRApp } from 'vue'
 import { createServer } from 'vite'
 import { renderToString as _renderToString } from 'vue/server-renderer'
 
+const PORT = process.env.PORT || 3000
 const resolve = (filePath) => path.resolve(filePath)
 
 const renderToString = async(url) => {
@@ -47,6 +48,6 @@ app.use('*', async(req, res) => {
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
 })
 
-app.listen(3000, () => {
-    console.log('http://localhost:3000')
+app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`)
 })
